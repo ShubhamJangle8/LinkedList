@@ -32,9 +32,9 @@ public class MyLinkedList {
 			this.tail = newNode;
 		} 
 		else {
-			INode tempNode = this.head;
-			this.head = newNode;
-			this.head.setNext(tempNode);
+			INode tempNode = this.tail;
+			this.tail = newNode;
+			tempNode.setNext(newNode);
 
 		}
 
