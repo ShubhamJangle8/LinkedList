@@ -3,7 +3,6 @@ package com.linkedlist.mylinklist;
 public class MyNode<K> {
 	private K key;
 	private MyNode<K> next;
-
 	
 	public MyNode(K key) {
 		this.key = key;
