@@ -79,5 +79,20 @@ class MyLinkedListTest {
 		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(mySecondNode)
 				&& mySecondNode.getNext().equals(myThirdNode) && myThirdNode.getNext() == null);
 	}
+	
+	@Test
+	void GivenNode_SearchedElement_WithAKey() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyNode<Integer> myFourthNode = new MyNode<>(85);
+		MyLinkedList myLinkList = new MyLinkedList();
+		myLinkList.add(myFirstNode);
+		myLinkList.add(mySecondNode);
+		myLinkList.add(myThirdNode);
+		myLinkList.add(myFourthNode);
+		INode foundNode = myLinkList.searchNode(30);
+		Assert.assertTrue(foundNode.equals(mySecondNode));
+	}
 
 }
