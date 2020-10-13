@@ -46,4 +46,21 @@ class MyLinkedListTest {
 				&& myThirdNode.getNext().equals(myFourthNode) && myFourthNode.getNext() == null);
 	}
 
+	@Test
+	void GivenNode_whenFirstElementDeleted_GetsDeleted() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyNode<Integer> myFourthNode = new MyNode<>(85);
+		MyLinkedList myLinkList = new MyLinkedList();
+		myLinkList.add(myFirstNode);
+		myLinkList.add(mySecondNode);
+		myLinkList.add(myThirdNode);
+		myLinkList.add(myFourthNode);
+		myLinkList.pop();
+		myLinkList.printLinkList();
+		Assert.assertTrue(myLinkList.getHead().equals(mySecondNode) && mySecondNode.getNext().equals(myThirdNode)
+				&& myThirdNode.getNext().equals(myFourthNode) && myFourthNode.getNext() == null);
+	}
+
 }
