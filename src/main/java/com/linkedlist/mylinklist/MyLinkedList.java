@@ -90,5 +90,13 @@ public class MyLinkedList {
 		}
 		return tempNode;
 	}
+	
+	public void insertAfterAKey(Integer key, INode newNode) {
+		INode tempNode = this.head;
+		while(tempNode.getKey() != key) {
+			tempNode = tempNode.getNext();
+		}
+		insert(tempNode, newNode);
+	}
 
 }
