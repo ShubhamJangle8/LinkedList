@@ -20,6 +20,7 @@ class MyLinkedListTest {
 		myLinkList.add(myFourthNode);
 		myLinkList.add(myFifthNode);
 		myLinkList.add(mySixthNode);
+		System.out.println("My nodes after appending the elements : ");
 		myLinkList.printLinkList();
 		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(mySecondNode)
 				&& mySecondNode.getNext().equals(myThirdNode) && myThirdNode.getNext().equals(myFourthNode)
@@ -40,6 +41,7 @@ class MyLinkedListTest {
 		myLinkList.add(myThirdNode);
 		myLinkList.add(myFourthNode);
 		myLinkList.insert(myFirstNode, myInsertionNode);
+		System.out.println("My nodes after inserting between two nodes : ");
 		myLinkList.printLinkList();
 		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(myInsertionNode)
 				&& myInsertionNode.getNext().equals(mySecondNode) && mySecondNode.getNext().equals(myThirdNode)
@@ -58,6 +60,7 @@ class MyLinkedListTest {
 		myLinkList.add(myThirdNode);
 		myLinkList.add(myFourthNode);
 		myLinkList.pop();
+		System.out.println("My nodes after popping the first element :");
 		myLinkList.printLinkList();
 		Assert.assertTrue(myLinkList.getHead().equals(mySecondNode) && mySecondNode.getNext().equals(myThirdNode)
 				&& myThirdNode.getNext().equals(myFourthNode) && myFourthNode.getNext() == null);
@@ -75,11 +78,12 @@ class MyLinkedListTest {
 		myLinkList.add(myThirdNode);
 		myLinkList.add(myFourthNode);
 		myLinkList.popLast();
+		System.out.println("My nodes after popping the last element : ");
 		myLinkList.printLinkList();
 		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(mySecondNode)
 				&& mySecondNode.getNext().equals(myThirdNode) && myThirdNode.getNext() == null);
 	}
-	
+
 	@Test
 	void GivenNode_SearchedElement_WithAKey() {
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -94,7 +98,7 @@ class MyLinkedListTest {
 		INode foundNode = myLinkList.searchNode(30);
 		Assert.assertTrue(foundNode.equals(mySecondNode));
 	}
-	
+
 	@Test
 	void GivenNode_SearchedElementWithAKey_InsertedAfterThat() {
 		MyNode<Integer> myFirstNode = new MyNode<>(38);
@@ -108,10 +112,29 @@ class MyLinkedListTest {
 		myLinkList.add(myThirdNode);
 		myLinkList.add(myFourthNode);
 		myLinkList.insertAfterAKey(80, myInsertionNode);
+		System.out.println("My nodes after inserting an element after a particular key : ");
 		myLinkList.printLinkList();
 		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(mySecondNode)
 				&& mySecondNode.getNext().equals(myInsertionNode) && myInsertionNode.getNext().equals(myThirdNode)
 				&& myThirdNode.getNext().equals(myFourthNode) && myFourthNode.getNext() == null);
+	}
+
+	@Test
+	void GivenNode_SearchedElementWithAKey_DeletedThatElement() {
+		MyNode<Integer> myFirstNode = new MyNode<>(38);
+		MyNode<Integer> mySecondNode = new MyNode<>(80);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyNode<Integer> myFourthNode = new MyNode<>(65);
+		MyLinkedList myLinkList = new MyLinkedList();
+		myLinkList.add(myFirstNode);
+		myLinkList.add(mySecondNode);
+		myLinkList.add(myThirdNode);
+		myLinkList.add(myFourthNode);
+		myLinkList.popFindingKey(70);
+		System.out.println("My nodes after popping an element from between : ");
+		myLinkList.printLinkList();
+		Assert.assertTrue(myLinkList.getHead().equals(myFirstNode) && myFirstNode.getNext().equals(mySecondNode)
+				&& mySecondNode.getNext().equals(myFourthNode) && myFourthNode.getNext() == null);
 	}
 
 }

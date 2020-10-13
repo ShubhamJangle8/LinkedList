@@ -41,7 +41,7 @@ public class MyLinkedList {
 	}
 
 	public void printLinkList() {
-		StringBuffer myNodes = new StringBuffer("My Nodes : ");
+		StringBuffer myNodes = new StringBuffer();
 		INode tempNode = head;
 		while (tempNode.getNext() != null) {
 			myNodes.append(tempNode.getKey());
@@ -60,21 +60,21 @@ public class MyLinkedList {
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
 	}
-	
+
 	public void pop() {
 		this.head = this.head.getNext();
 	}
-	
+
 	public INode popLast() {
-		if(this.head == null) {
+		if (this.head == null) {
 			return null;
 		}
-		if(this.head.getNext() == null) {
+		if (this.head.getNext() == null) {
 			return null;
-		}
+		} 
 		else {
 			INode tempNode = this.head;
-			while(!tempNode.getNext().equals(this.tail)) {
+			while (!tempNode.getNext().equals(this.tail)) {
 				tempNode = tempNode.getNext();
 			}
 			tempNode.setNext(null);
@@ -82,21 +82,44 @@ public class MyLinkedList {
 			return tempNode;
 		}
 	}
-	
+
 	public INode searchNode(Integer key) {
 		INode tempNode = this.head;
-		while(tempNode.getKey() != key) {
+		while (tempNode.getKey() != key) {
 			tempNode = tempNode.getNext();
 		}
 		return tempNode;
 	}
-	
+
 	public void insertAfterAKey(Integer key, INode newNode) {
 		INode tempNode = this.head;
-		while(tempNode.getKey() != key) {
+		while (tempNode.getKey() != key) {
 			tempNode = tempNode.getNext();
 		}
 		insert(tempNode, newNode);
+	}
+
+	public INode popFindingKey(Integer key) {
+		INode temp = head;
+		INode prev = null;
+		if (this.head == null) {
+			return null;
+		}
+		if (temp.getNext() == null) {
+			return null;
+		} 
+		else if (temp.getKey() == key) {
+			this.head = temp.getNext();
+			return temp;
+		}
+		else {
+			while (temp != null && temp.getKey() != key) {
+				prev = temp;
+				temp = temp.getNext();
+			}
+			prev.setNext(temp.getNext());
+			return temp;
+		}
 	}
 
 }
