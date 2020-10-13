@@ -24,7 +24,7 @@ public class MyLinkedList {
 		this.head = null;
 	}
 
-	public void add(INode<?> newNode) {
+	public void add(INode newNode) {
 		if (this.head == null) {
 			this.head = newNode;
 		}
@@ -63,6 +63,24 @@ public class MyLinkedList {
 	
 	public void pop() {
 		this.head = this.head.getNext();
+	}
+	
+	public INode popLast() {
+		if(this.head == null) {
+			return null;
+		}
+		if(this.head.getNext() == null) {
+			return null;
+		}
+		else {
+			INode tempNode = this.head;
+			while(!tempNode.getNext().equals(this.tail)) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(null);
+			this.tail = tempNode;
+			return tempNode;
+		}
 	}
 
 }
